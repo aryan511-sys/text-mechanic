@@ -25,30 +25,24 @@ function App() {
       setMode('dark')
       document.body.style.background = "black"
       document.body.style.color = "white"
-      setmyText("ડાર્ક મોડ ચાલુ છે.");
+      setmyText("Enable Light Mode.");
       showAlert("Dark mode has been Enable" , "success");
-      setInterval(() => {
-        document.title = "SIT - Admission"
-      }, 150)
-      setInterval(() => {
-        document.title = "SIT - B.sc.IT"
-      }, 200)
     } else {
       setMode('light')
       document.body.style.background = "white"
       document.body.style.color = "black"
-      setmyText("લાઇટ મોડ ચાલુ છે.");
+      setmyText("Enable Dark Mode.");
       showAlert("Light mode has been Enable" , "success")
     }
   }
 
-  const [myText , setmyText] = useState ('લાઇટ મોડ ચાલુ છે.');
+  const [myText , setmyText] = useState ('Enable Dark Mode.');
 
   return (
   <>
-  <Navbar title = "SIT" aboutText="Abour Us" mode={mode} toogleMode={toogleMode} myText={myText}/>
+  <Navbar title = "Text Mechanic" aboutText="Abour Us" mode={mode} toogleMode={toogleMode} myText={myText}/>
   <Alert alert={alert}/>
-  <TextForm heading="Enter your text" mode={mode} toogleMode={toogleMode} showAlert={showAlert}/>
+  <TextForm heading="Repair Your Text." mode={mode} toogleMode={toogleMode} showAlert={showAlert}/>
 
   </>
   );

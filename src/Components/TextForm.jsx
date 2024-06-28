@@ -12,12 +12,14 @@ export default function TextForm(props) {
         // console.log("Btn Click");
         let newText = text.toUpperCase()
         setText(newText);
+        props.showAlert("Convert to UpperCase" , "success");
     }
 
     const handleWithChange = () => {
         // console.log("Btn Click");
         let newText = text.toLowerCase()
         setText(newText);
+        props.showAlert("Convert to LowerCase" , "success");
     }
 
 
@@ -25,24 +27,27 @@ export default function TextForm(props) {
         let newText = new SpeechSynthesisUtterance();
         newText.text = text;
         window.speechSynthesis.speak(newText);
+        props.showAlert("Text here to speak" , "success");
     }
 
     const clearText = () => {
         // console.log("Btn Click");
         let newText = "";
-        setText(newText);
+        setText(newText);props.showAlert("Clear Text" , "success");
     }
 
 
     const handleCopy = () => {
         var newText = document.getElementById('exampleFormControlTextarea1');
-        newText.select();
+        // newText.select();
         navigator.clipboard.writeText(newText.value);
+        props.showAlert("Copy Here" , "success");
     }
 
     const handleExtra = () => {
         let newText = text.split(/[ ] + /);
         setText(newText.join(" "));
+        props.showAlert("Remove Extra Space" , "success");
     }
 
     return (
@@ -64,7 +69,7 @@ export default function TextForm(props) {
                 <p>{text.length} Characters</p>
                 <p>{0.008 * text.split("").filter((element)=>{return element.length !== 0}).length} Reading Time</p>
                 <h3>Previews</h3>
-                <p>{text}</p>
+                <p>{text.length>0 ? text : "Nothing to Preview!"}</p>
             </div>
         </div>
     )
